@@ -26,6 +26,7 @@ class ReactFlowUtils {
       parentNodes.push({
         id: index.toString(),
         data: { label: node.data.label },
+        resourceUrls: node.data.resourceUrl,
         position: { x, y },
         type: "selectorNode",
       });

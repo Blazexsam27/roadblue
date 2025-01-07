@@ -12,6 +12,8 @@ import reactFlowUtils from "../../utils/reactFlowUtils";
 import CustomParentNode from "../ReactFlowCustomNodes/CustomParentNode";
 import stringUtils from "../../utils/stringUtils";
 import { setRoadMap } from "../../features/groqSlice";
+import ModalWrapper from "../Widgets/ModalWrapper";
+import ResourceModal from "../Modals/ResourceModal";
 
 const initBgColor = "#F5EFFF";
 
@@ -41,9 +43,10 @@ function RoadMapCanvas() {
   const roadMap = useSelector((state: any) => state.groq.roadMap);
   const dispatch = useDispatch();
 
-  console.log("roadmap -->>", roadMap);
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+  const [showResourceModal, setShowResourceModal] = useState(false);
+  const [selectedNodeResource, setSelectedNodeResource] = useState([]);
 
   useEffect(() => {
     processRoadMap(roadMap);
@@ -71,11 +74,16 @@ function RoadMapCanvas() {
     []
   );
 
+  const handleNodeClick = (event: any, node: any) => {
+    event.preventDefault();
+    setSelectedNodeResource(node.resourceUrls);
+    setShowResourceModal(true);
+  };
+
   // extract encoded data from url if any
   const extractDataFromUrl = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedData = urlParams.get("data");
-    console.log("enc", encodedData);
     if (encodedData && encodedData.length > 0) {
       const decodedData = stringUtils.decodeFromLzString(encodedData);
       const parsedData = JSON.parse(decodedData);
@@ -87,12 +95,21 @@ function RoadMapCanvas() {
 
   return (
     <div className="h-screen mt-10">
+      {showResourceModal ? (
+        <ModalWrapper>
+          <ResourceModal
+            click={() => setShowResourceModal(false)}
+            data={selectedNodeResource}
+          />
+        </ModalWrapper>
+      ) : null}
       <ReactFlow
         nodes={nodes}
         onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onNodeClick={handleNodeClick}
         edges={edges}
         nodeTypes={nodeTypes}
-        onEdgesChange={onEdgesChange}
         style={{ background: initBgColor }}
         fitView
       >

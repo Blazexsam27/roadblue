@@ -20,8 +20,7 @@ class GroqServices {
 
   async main(searchTerm: string): Promise<Object | null> {
     const chatCompletion = await this.getGroqChatCompletion(searchTerm);
-
-    console.log("chatCompletion--->>", chatCompletion);
+    console.log("Chat completion", chatCompletion);
 
     return chatCompletion;
   }
@@ -36,7 +35,8 @@ class GroqServices {
       1. The output must be a valid JSON (not an explanation).
       2. The "label" inside the "data" property should represent a topic in the roadmap.
       3. The "children" property should be an array of strings representing subtopics.
-      4. You must always return valid json fenced by a markdown code block. Do not return any additional text.
+      4. The resourceUrl property should be an array of strings representing URLs which can be used to learn the topics, If in case url is not present suggest books, If in case both of them not present simply fill null.
+      5. You must always return valid json fenced by a markdown code block. Do not return any additional text.
 
       Provide a long learning roadmap from basic to advance topics and subtopics for ${searchTerm},  as a valid JavaScript array of objects in the following format:
      [
@@ -44,12 +44,20 @@ class GroqServices {
               data: { 
                 label: "Syntax",
                 children: ["Variables", "Data Types", "Operators", "Control Structures"]
+                resourceUrl: [
+                  "https://groq.io/syntax",
+                  "https://javatpoint.com/syntax",
+                ]
                 },
           },
           {
               data: { 
                 label: "Methods",
-                children: ["Built-in", "User-defined"]
+                children: ["Built-in", "User-defined"],
+                  resourceUrl: [
+                  "https://groq.io/methods",
+                  "https://geeksforgeeks.com/methods",
+                ]
                },
           }
       ]
