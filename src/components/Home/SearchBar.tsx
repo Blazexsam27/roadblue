@@ -17,27 +17,27 @@ const SearchBar: React.FC = () => {
 
   const search = async (e: any) => {
     e.preventDefault();
-    // try {
-    //   setIsLoading(true);
-    //   setTimeout(() => {
-    //     setLoadingMessage({
-    //       type: "info",
-    //       msg: "😅 Hold on we are finding resources ...",
-    //     });
-    //   }, 6000);
-    //   const chatCompletion = await groqServices.main(searchQuery.trim());
-    //   if (chatCompletion) {
-    //     // set the roadmap in redux store
-    //     dispatch(setRoadMap(chatCompletion));
-    //   }
-    //   setIsLoading(false);
-    // } catch (error: any) {
-    //   setLoadingMessage({
-    //     type: "error",
-    //     msg: "☹ Something went wrong, please change the search term/query and try again",
-    //   });
-    //   console.error("Error occured while calling api", error);
-    // }
+    try {
+      setIsLoading(true);
+      setTimeout(() => {
+        setLoadingMessage({
+          type: "info",
+          msg: "😅 Hold on we are finding resources ...",
+        });
+      }, 6000);
+      const chatCompletion = await groqServices.main(searchQuery.trim());
+      if (chatCompletion) {
+        // set the roadmap in redux store
+        dispatch(setRoadMap(chatCompletion));
+      }
+      setIsLoading(false);
+    } catch (error: any) {
+      setLoadingMessage({
+        type: "error",
+        msg: "☹ Something went wrong, please change the search term/query and try again",
+      });
+      console.error("Error occured while calling api", error);
+    }
   };
 
   return (

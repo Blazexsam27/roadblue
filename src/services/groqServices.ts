@@ -20,7 +20,6 @@ class GroqServices {
 
   async main(searchTerm: string): Promise<Object | null> {
     const chatCompletion = await this.getGroqChatCompletion(searchTerm);
-    console.log("Chat completion", chatCompletion);
 
     return chatCompletion;
   }
