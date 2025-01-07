@@ -84,6 +84,10 @@ const SearchBar: React.FC = () => {
           <span className="ml-2 hidden sm:inline">Search</span>
         </button>
       </form>
+      <p className="text-sm my-4 text-slate-600 font-medium">
+        ⓘ Hint: Clicking on parent node (Purple Nodes) will reveal learning
+        resources
+      </p>
 
       <div className="flex flex-col items-center">
         <PacmanLoader

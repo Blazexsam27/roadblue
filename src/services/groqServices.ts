@@ -44,8 +44,8 @@ class GroqServices {
                 label: "Syntax",
                 children: ["Variables", "Data Types", "Operators", "Control Structures"]
                 resourceUrl: [
-                  "https://groq.io/syntax",
-                  "https://javatpoint.com/syntax",
+                  "https://javatpoint.com",
+                    "https://geeksforgeeks.com",
                 ]
                 },
           },
@@ -54,8 +54,8 @@ class GroqServices {
                 label: "Methods",
                 children: ["Built-in", "User-defined"],
                   resourceUrl: [
-                  "https://groq.io/methods",
-                  "https://geeksforgeeks.com/methods",
+                  "https://w3school.com",
+                  "https://geeksforgeeks.com",
                 ]
                },
           }
