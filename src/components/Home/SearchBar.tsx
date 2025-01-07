@@ -78,6 +78,10 @@ const SearchBar: React.FC = () => {
             hover:from-purple-600 hover:to-indigo-700
             focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-opacity-50
             transition-all duration-300 ease-in-out
+            max-md:right-[10px]
+
+            max-sm:right-[60px]
+            max-sm:px-4
           "
         >
           <IoSearchOutline size={24} />
