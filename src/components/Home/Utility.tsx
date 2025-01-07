@@ -4,7 +4,6 @@ import { FaFileExport } from "react-icons/fa6";
 import ModalWrapper from "../Widgets/ModalWrapper";
 import ExportModal from "../Modals/ExportModal";
 import ShareModal from "../Modals/ShareModal";
-import stringUtils from "../../utils/stringUtils";
 import { useSelector } from "react-redux";
 
 function Utility() {
@@ -15,13 +14,18 @@ function Utility() {
 
   const [shareableLink, setShareableLink] = useState("");
 
-  const handleShareClick = () => {
+  const handleShareClick = async () => {
     setShowShareModal(true);
+    try {
+      const { default: stringUtils } = await import("../../utils/stringUtils");
 
-    const encodedData = stringUtils.encodeToLzString(roadMap);
-    const shareLink = `${window.location.origin}/?data=${encodedData}`;
+      const encodedData = stringUtils.encodeToLzString(roadMap);
+      const shareLink = `${window.location.origin}/?data=${encodedData}`;
 
-    setShareableLink(shareLink);
+      setShareableLink(shareLink);
+    } catch (error: any) {
+      console.error("Error while generating shareable link", error);
+    }
   };
 
   return (

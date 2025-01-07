@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import groqServices from "../../services/groqServices";
 import { useDispatch } from "react-redux";
 import { setRoadMap } from "../../features/groqSlice";
 import { PacmanLoader } from "react-spinners";
@@ -17,7 +16,11 @@ const SearchBar: React.FC = () => {
 
   const search = async (e: any) => {
     e.preventDefault();
+
     try {
+      const { default: groqServices } = await import(
+        "../../services/groqServices"
+      );
       setIsLoading(true);
       setTimeout(() => {
         setLoadingMessage({
