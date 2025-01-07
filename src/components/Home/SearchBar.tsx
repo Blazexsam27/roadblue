@@ -10,20 +10,28 @@ const SearchBar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState({
+    type: "info",
+    msg: "😊 Generating a roadmap for you...",
+  });
 
   const search = async (e: any) => {
     e.preventDefault();
     try {
       setIsLoading(true);
+
       const chatCompletion = await groqServices.main(searchQuery.trim());
       if (chatCompletion) {
-        console.log("complete", chatCompletion);
         // set the roadmap in redux store
         dispatch(setRoadMap(chatCompletion));
       }
       console.log("incomplete", chatCompletion);
       setIsLoading(false);
     } catch (error: any) {
+      setLoadingMessage({
+        type: "error",
+        msg: "☹ Something went wrong, please change the search term/query and try again",
+      });
       console.error("Error occured while calling api", error);
     }
   };
@@ -70,8 +78,22 @@ const SearchBar: React.FC = () => {
         </button>
       </form>
 
-      <div className="my-8 flex justify-center">
-        <PacmanLoader color="#8b5cf6" loading={isLoading} size={20} />
+      <div className="flex flex-col items-center">
+        <PacmanLoader
+          color="#8b5cf6"
+          loading={isLoading}
+          size={20}
+          className="mt-4"
+        />
+        {isLoading ? (
+          <div
+            className={`text-md my-4 ${
+              loadingMessage.type === "error" ? "text-red-500" : "text-gray-600"
+            }`}
+          >
+            {loadingMessage.msg}
+          </div>
+        ) : null}
       </div>
     </div>
   );

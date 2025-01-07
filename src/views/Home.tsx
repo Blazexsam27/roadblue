@@ -12,6 +12,18 @@ function Home() {
 
   return (
     <div className="container mx-auto px-2 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl bg-white  py-6">
+      <div className="flex justify-center items-center text-5xl text-center font-bold my-6">
+        <span>
+          <img src="/assets/logo.png" alt="" className="w-20 h-20" />
+        </span>
+        <span>RoadBlue</span>
+      </div>
+
+      <div className="text-lg text-center pb-4">
+        Generate your own roadmap with our AI powered tool and share with your
+        communities.
+      </div>
+
       <SearchBar />
 
       {/* Hidden For Future Upgrades */}

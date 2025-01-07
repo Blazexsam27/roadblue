@@ -79,12 +79,14 @@ function RoadMapCanvas() {
     if (encodedData && encodedData.length > 0) {
       const decodedData = stringUtils.decodeFromLzString(encodedData);
       const parsedData = JSON.parse(decodedData);
+      window.history.replaceState({}, document.title, window.location.pathname);
+
       dispatch(setRoadMap(parsedData));
     }
   };
 
   return (
-    <div className="h-screen mt-14">
+    <div className="h-screen mt-10">
       <ReactFlow
         nodes={nodes}
         onNodesChange={onNodesChange}

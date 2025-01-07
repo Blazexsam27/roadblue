@@ -35,6 +35,12 @@ function Utility() {
         </ModalWrapper>
       ) : null}
 
+      {showExportModal ? (
+        <ModalWrapper>
+          <ExportModal click={(val: boolean) => setShowExportModal(val)} />
+        </ModalWrapper>
+      ) : null}
+
       <div className="relative group">
         <IoMdShareAlt
           onClick={handleShareClick}
@@ -48,6 +54,7 @@ function Utility() {
 
       <div className="relative group">
         <FaFileExport
+          onClick={() => setShowExportModal(true)}
           fontSize={32}
           className="cursor-pointer text-slate-500 hover:text-purple-500 duration-300 transition-all"
         />
