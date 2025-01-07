@@ -19,8 +19,8 @@ const ResourceModal = ({ click, data }: { click: Function; data: any[] }) => {
           {data.map((resource, index) => (
             <li className="text-ellipsis" key={index}>
               <a
-                href={resource}
-                target="_blank"
+                href={resource.includes("http") ? resource : "#"}
+                target={resource.includes("http") ? "_blank" : "none"}
                 rel="noopener noreferrer"
                 className="
                     block p-4 bg-gradient-to-r from-purple-100 to-indigo-100

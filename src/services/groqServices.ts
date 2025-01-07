@@ -34,7 +34,7 @@ class GroqServices {
       1. The output must be a valid JSON (not an explanation).
       2. The "label" inside the "data" property should represent a topic in the roadmap.
       3. The "children" property should be an array of strings representing subtopics.
-      4. The resourceUrl property should be an array of strings representing URLs which can be used to learn the topics, If in case url is not present suggest books, If in case both of them not present simply fill null.
+      4. The resourceUrl property should be an array of strings representing URLs which can be used to learn the topics (No need to give subroutes, just main website route), If in case url is not present suggest books, If in case both of them not present simply fill null.
       5. You must always return valid json fenced by a markdown code block. Do not return any additional text.
 
       Provide a long learning roadmap from basic to advance topics and subtopics for ${searchTerm},  as a valid JavaScript array of objects in the following format:
