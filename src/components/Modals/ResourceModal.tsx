@@ -17,12 +17,13 @@ const ResourceModal = ({ click, data }: { click: Function; data: any[] }) => {
       <div className="p-6 max-h-[70vh] overflow-y-auto">
         <ul className="space-y-4">
           {data.map((resource, index) => (
-            <li className="text-ellipsis" key={index}>
+            <li key={index}>
               <a
                 href={resource.includes("http") ? resource : "#"}
                 target={resource.includes("http") ? "_blank" : "none"}
                 rel="noopener noreferrer"
                 className="
+                overflow-scroll
                     block p-4 bg-gradient-to-r from-purple-100 to-indigo-100
                     rounded-lg shadow-md
                     transform transition-all duration-200 ease-in-out
@@ -32,11 +33,17 @@ const ResourceModal = ({ click, data }: { click: Function; data: any[] }) => {
               >
                 <div className="flex items-center ">
                   {!resource.includes("http") ? (
-                    <FaBookOpen className="text-purple-600 mr-3" size={22} />
+                    <FaBookOpen
+                      className="text-purple-600 mr-3 w-1/12"
+                      fontSize={22}
+                    />
                   ) : (
-                    <FaLink className="text-indigo-600 mr-3" size={22} />
+                    <FaLink
+                      className="text-indigo-600 mr-3 w-1/12"
+                      fontSize={22}
+                    />
                   )}
-                  <span className="text-base sm:text-lg font-medium text-gray-800 break-words">
+                  <span className="w-11/12 text-base sm:text-lg font-medium text-gray-800 break-words">
                     {resource}
                   </span>
                 </div>

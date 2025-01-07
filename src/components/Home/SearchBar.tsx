@@ -80,7 +80,7 @@ const SearchBar: React.FC = () => {
             transition-all duration-300 ease-in-out
             max-md:right-[10px]
 
-            max-sm:right-[60px]
+            max-sm:right-[30px]
             max-sm:px-4
           "
         >
@@ -88,7 +88,7 @@ const SearchBar: React.FC = () => {
           <span className="ml-2 hidden sm:inline">Search</span>
         </button>
       </form>
-      <p className="text-sm my-4 text-slate-600 font-medium">
+      <p className="text-sm text-center my-4 text-slate-600 font-medium">
         ⓘ Hint: Clicking on parent node (Purple Nodes) will reveal learning
         resources
       </p>
