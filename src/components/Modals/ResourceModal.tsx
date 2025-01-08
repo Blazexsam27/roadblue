@@ -23,7 +23,7 @@ const ResourceModal = ({ click, data }: { click: Function; data: any[] }) => {
                 target={resource.includes("http") ? "_blank" : "none"}
                 rel="noopener noreferrer"
                 className="
-                overflow-scroll
+                overflow-x-auto
                     block p-4 bg-gradient-to-r from-purple-100 to-indigo-100
                     rounded-lg shadow-md
                     transform transition-all duration-200 ease-in-out
